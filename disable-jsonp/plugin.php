@@ -8,9 +8,14 @@ Author: Sean Hendrickson
 Author URI: https://github.com/seandrickson
 */
 
+// No direct call
+if( !defined( 'YOURLS_ABSPATH' ) ) die();
+
+
 yourls_add_action( 'pre_api_output', 'seans_pre_api_output' );
-function seans_pre_api_output( $mode, $return ) {
-	if( $mode == "jsonp" ) {
-		die();
-	}
+function seans_pre_api_output( $argh ) { 
+	
+	// $argh[0] == $mode
+	// $argh[1] == $return
+	if( $argh[0] == "jsonp" ) die();
 }
